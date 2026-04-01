@@ -5,13 +5,13 @@
              xmlns:local="clr-namespace:TabView"
              x:Class="TabView.MainPage">
 
-    <!--<ContentPage.Resources>
-        --><!-- Normal header --><!--
+    <ContentPage.Resources>
+         <!--Normal header--> 
         <DataTemplate x:Key="NormalHeaderTemplate">
             <Label Text="{Binding Title}" Padding="12" FontSize="14" />
         </DataTemplate>
 
-        --><!-- Important header --><!--
+         <!--Important header--> 
         <DataTemplate x:Key="ImportantHeaderTemplate">
             <StackLayout Orientation="Horizontal" Spacing="6" Padding="12">
                 <Label Text="★" FontSize="14" TextColor="DarkOrange" />
@@ -21,14 +21,14 @@
 
         <local:HeaderTemplateSelector x:Key="HeaderSelector" NormalTemplate="{StaticResource NormalHeaderTemplate}" ImportantTemplate="{StaticResource ImportantHeaderTemplate}" />
 
-        --><!-- Normal content --><!--
+         <!--Normal content--> 
         <DataTemplate x:Key="NormalContentTemplate">
             <StackLayout Padding="20">
                 <Label Text="{Binding Description}" FontSize="14" />
             </StackLayout>
         </DataTemplate>
 
-        --><!-- Important content --><!--
+         <!--Important content--> 
         <DataTemplate x:Key="ImportantContentTemplate">
             <Grid Padding="10">
                 <Border Padding="20" StrokeShape="RoundRectangle 8" BackgroundColor="#FFF6E5" Stroke="DarkOrange">
@@ -47,6 +47,6 @@
         <local:TabViewModel />
     </ContentPage.BindingContext>
 
-    <tabView:SfTabView ItemsSource="{Binding Tabs}" HeaderItemTemplate="{StaticResource HeaderSelector}" ContentItemTemplate="{StaticResource ContentSelector}" />-->
+    <tabView:SfTabView ItemsSource="{Binding Tabs}" HeaderItemTemplate="{StaticResource HeaderSelector}" ContentItemTemplate="{StaticResource ContentSelector}" />
 
 </ContentPage>
