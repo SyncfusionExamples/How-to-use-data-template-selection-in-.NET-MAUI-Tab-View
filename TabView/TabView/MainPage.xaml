@@ -19,7 +19,10 @@
             </StackLayout>
         </DataTemplate>
 
-        <local:HeaderTemplateSelector x:Key="HeaderSelector" NormalTemplate="{StaticResource NormalHeaderTemplate}" ImportantTemplate="{StaticResource ImportantHeaderTemplate}" />
+        <!-- DataTemplateSelector for HeaderItemTemplate-->
+        <local:HeaderTemplateSelector x:Key="HeaderSelector"
+                NormalTemplate="{StaticResource NormalHeaderTemplate}"
+                ImportantTemplate="{StaticResource ImportantHeaderTemplate}" />
 
          <!--Normal content--> 
         <DataTemplate x:Key="NormalContentTemplate">
@@ -40,13 +43,18 @@
             </Grid>
         </DataTemplate>
 
-        <local:ContentTemplateSelector x:Key="ContentSelector" NormalTemplate="{StaticResource NormalContentTemplate}" ImportantTemplate="{StaticResource ImportantContentTemplate}" />
+        <!-- DataTemplateSelector for ContentItemTemplate-->
+        <local:ContentTemplateSelector x:Key="ContentSelector" 
+                NormalTemplate="{StaticResource NormalContentTemplate}"
+                ImportantTemplate="{StaticResource ImportantContentTemplate}" />
     </ContentPage.Resources>
 
     <ContentPage.BindingContext>
         <local:TabViewModel />
     </ContentPage.BindingContext>
 
-    <tabView:SfTabView ItemsSource="{Binding Tabs}" HeaderItemTemplate="{StaticResource HeaderSelector}" ContentItemTemplate="{StaticResource ContentSelector}" />
+    <tabView:SfTabView ItemsSource="{Binding Tabs}" 
+        HeaderItemTemplate="{StaticResource HeaderSelector}"
+        ContentItemTemplate="{StaticResource ContentSelector}" />
 
 </ContentPage>
