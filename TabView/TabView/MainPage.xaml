@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+             xmlns:local="clr-namespace:TabView"
+             x:Class="TabView.MainPage">
+
+    <ContentPage.Resources>
+         <!--Normal header--> 
+        <DataTemplate x:Key="NormalHeaderTemplate">
+            <Label Text="{Binding Title}" Padding="12" FontSize="14" />
+        </DataTemplate>
+
+         <!--Important header--> 
+        <DataTemplate x:Key="ImportantHeaderTemplate">
+            <StackLayout Orientation="Horizontal" Spacing="6" Padding="12">
+                <Label Text="★" FontSize="14" TextColor="DarkOrange" />
+                <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="DarkOrange" />
+            </StackLayout>
+        </DataTemplate>
+
+        <!-- DataTemplateSelector for HeaderItemTemplate-->
+        <local:HeaderTemplateSelector x:Key="HeaderSelector"
+                NormalTemplate="{StaticResource NormalHeaderTemplate}"
+                ImportantTemplate="{StaticResource ImportantHeaderTemplate}" />
+
+         <!--Normal content--> 
+        <DataTemplate x:Key="NormalContentTemplate">
+            <StackLayout Padding="20">
+                <Label Text="{Binding Description}" FontSize="14" />
+            </StackLayout>
+        </DataTemplate>
+
+         <!--Important content--> 
+        <DataTemplate x:Key="ImportantContentTemplate">
+            <Grid Padding="10">
+                <Border Padding="20" StrokeShape="RoundRectangle 8" BackgroundColor="#FFF6E5" Stroke="DarkOrange">
+                    <StackLayout Spacing="8">
+                        <Label Text="Important" FontAttributes="Bold" TextColor="DarkOrange" />
+                        <Label Text="{Binding Description}" FontSize="14" />
+                    </StackLayout>
+                </Border>
+            </Grid>
+        </DataTemplate>
+
+        <!-- DataTemplateSelector for ContentItemTemplate-->
+        <local:ContentTemplateSelector x:Key="ContentSelector" 
+                NormalTemplate="{StaticResource NormalContentTemplate}"
+                ImportantTemplate="{StaticResource ImportantContentTemplate}" />
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:TabViewModel />
+    </ContentPage.BindingContext>
+
+    <tabView:SfTabView ItemsSource="{Binding Tabs}" 
+        HeaderItemTemplate="{StaticResource HeaderSelector}"
+        ContentItemTemplate="{StaticResource ContentSelector}" />
+
+</ContentPage>
